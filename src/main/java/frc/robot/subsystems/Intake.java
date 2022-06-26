@@ -3,23 +3,24 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Ports;
 
-
-public class Intake {
+public class Intake extends SubsystemBase {
     private static Intake INSTANCE;
     private final WPI_TalonFX motor = new WPI_TalonFX(Ports.Intake.MOTOR);
     private final Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.Intake.SELENOID);
 
 
-    public Intake() {
+    private Intake() {
         motor.getSelectedSensorPosition();
         motor.enableVoltageCompensation(true);
         motor.configVoltageCompSaturation(Constants.NOMINAL_VOLTAGE, Constants.TALON_TIMEOUT);
         motor.configClosedloopRamp(0);
         motor.configOpenloopRamp(0);
-
+        motor.setInverted(Ports.Intake.IS_INVERTED);
     }
 
     public static Intake getINSTANCE(){
