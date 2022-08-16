@@ -1,15 +1,13 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
 public class Ports {
 
-    public static final class Intake{
-        public static final int MOTOR = 0;
-        public static final int SELENOID = 0;
-        public static final boolean IS_INVERTED = false;
-    }
+public static int CONVEYOR=0;
+    public static TalonFXInvertType INVERTED= TalonFXInvertType.Clockwise;
 
-    public static final class Conveyor{
-        public static final int MOTOR = 0;
-        public static final boolean IS_INVERTED = false;
-    }
+public static int INTAKE=0;
+public static int PISTON=0;
 }
