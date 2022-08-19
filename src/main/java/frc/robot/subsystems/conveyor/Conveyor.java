@@ -15,13 +15,27 @@ public class Conveyor extends SubsystemBase {
         motor.enableVoltageCompensation(Constants.Conveyor.VOLT_ENABLE);
         motor.configVoltageCompSaturation(Constants.Conveyor.SAT);
     }
-    
+
+    /**
+     * set power
+     * @param power%
+     */
     public void setPower(double power){
         motor.set(power);
     }
+
+    /**
+     * get power
+     * @return power%
+     */
     public double getPower(){
         return motor.get();
     }
+
+    /**
+     * create Conveyor
+     * @return Conveyor
+     */
     public Conveyor INSTACE(){
         if (INSTANCE == null){
             INSTANCE = new Conveyor();
