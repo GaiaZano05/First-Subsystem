@@ -12,6 +12,7 @@ public class Ports {
     }
     public static class Conveyor {
         public static int MOTOR = 0;
+        public static TalonFXInvertType INV = TalonFXInvertType.Clockwise;
     }
 
 }
