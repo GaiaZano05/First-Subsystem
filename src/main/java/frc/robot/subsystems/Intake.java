@@ -27,5 +27,16 @@ public class Intake extends SubsystemBase {
     public double getPower(){
         return motor.get();
     }
+
+    public void openPiston(){
+        piston.set(true);
+    }
+    public void closePiston(){
+        piston.set(false);
+    }
+    public boolean getPiston(){
+        return piston.get();
+    }
+    
 }
 
