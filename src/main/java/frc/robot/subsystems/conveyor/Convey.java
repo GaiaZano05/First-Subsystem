@@ -2,9 +2,13 @@ package frc.robot.subsystems.conveyor;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+/**
+ * convey a ball
+ */
 public class Convey extends CommandBase {
         private Conveyor conveyor;
         private double power;
+
 
     public Convey(Conveyor conveyor, double power) {
         this.conveyor = conveyor;
