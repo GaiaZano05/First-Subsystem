@@ -13,30 +13,39 @@ import java.security.spec.RSAOtherPrimeInfo;
 public class Intake extends SubsystemBase {
     private final WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
     private final Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.PISTON);
-    private final Intake INSTANCE = null;
+    private Intake INSTANCE = null;
 
-    private Intake(){
+    private Intake() {
         motor.setInverted(Ports.INV);
         motor.enableVoltageCompensation(Constants.VOLT_ENABLE);
         motor.configVoltageCompSaturation(Constants.SAT);
     }
 
-    public void setPower(double power){
+    public void setPower(double power) {
         motor.set(power);
     }
-    public double getPower(){
+
+    public double getPower() {
         return motor.get();
     }
 
-    public void openPiston(){
+    public void openPiston() {
         piston.set(true);
     }
-    public void closePiston(){
+
+    public void closePiston() {
         piston.set(false);
     }
-    public boolean getPiston(){
+
+    public boolean getPiston() {
         return piston.get();
     }
-    
+
+    public Intake INSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new Intake();
+        }
+        return INSTANCE;
+    }
 }
 
