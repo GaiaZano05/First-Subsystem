@@ -14,14 +14,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final int NOMINAL_VOLTAGE = 12;
-    public static final int TALON_TIMEOUT = 10;
-
-    public static final class Intake {
-        public static double POWER = 0.8;
+    public static class Intake {
+        public static boolean VOLT_ENABLE = true;
+        public static int SAT = 12;
     }
-
-    public static final class Conveyor {
-        public static int motor = 0;
+    public static class Conveyor {
+        public static boolean VOLT_ENABLE = true;
+        public static int SAT = 12;
     }
 }

@@ -1,67 +1,73 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Ports;
 
-public class Intake extends SubsystemBase {
-    private static Intake INSTANCE;
-    private final WPI_TalonFX motor = new WPI_TalonFX(Ports.Intake.MOTOR);
-    private final Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.Intake.SELENOID);
+import java.security.spec.RSAOtherPrimeInfo;
 
+public class Intake extends SubsystemBase {
+    private static WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
+    private static Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.PISTON);
+    private static Intake INSTANCE = null;
 
     private Intake() {
-        motor.getSelectedSensorPosition();
-        motor.enableVoltageCompensation(true);
-        motor.configVoltageCompSaturation(Constants.NOMINAL_VOLTAGE, Constants.TALON_TIMEOUT);
-        motor.configClosedloopRamp(0);
-        motor.configOpenloopRamp(0);
-        motor.setInverted(Ports.Intake.IS_INVERTED);
+        motor.setInverted(Ports.INV);
+        motor.enableVoltageCompensation(Constants.VOLT_ENABLE);
+        motor.configVoltageCompSaturation(Constants.SAT);
     }
 
-    public static Intake getINSTANCE(){
-        if (INSTANCE == null){
-            INSTANCE = new Intake();
-        }
-        return INSTANCE;
+    /**
+     * set power
+     * @param power power%
+     */
+    public void setPower(double power) {
+        motor.set(power);
     }
 
+    /**
+     * get power
+     * @return power%
+     */
     public double getPower() {
         return motor.get();
     }
 
-    public void setPower(double power){
-        motor.set(power);
+    /**
+     * open piston
+     */
+    public void openPiston() {
+        piston.set(true);
     }
 
-    public void openPiston(){
-        piston.set(pistonState.OPEN.value);
-    }
-    public void closePiston(){
-        piston.set(pistonState.CLOSED.value);
-    }
-
-    public void togglePiston(){
-        piston.toggle();
+    /**
+     * close piston
+     */
+    public void closePiston() {
+        piston.set(false);
     }
 
-    public boolean getPistonState() {
+    /**
+     * get piston
+     * @return true/false
+     */
+    public boolean getPiston() {
         return piston.get();
     }
 
-
-    public enum pistonState{
-        OPEN(true),
-        CLOSED(false);
-
-        public final boolean value;
-
-        pistonState(boolean value) {
-            this.value = value;
+    /**
+     * create intake
+     * @return intake
+     */
+    public Intake INSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new Intake();
         }
+        return INSTANCE;
     }
 }
+
