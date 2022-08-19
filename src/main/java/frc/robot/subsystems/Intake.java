@@ -21,26 +21,48 @@ public class Intake extends SubsystemBase {
         motor.configVoltageCompSaturation(Constants.SAT);
     }
 
+    /**
+     * set power
+     * @param power power%
+     */
     public void setPower(double power) {
         motor.set(power);
     }
 
+    /**
+     * get power
+     * @return power%
+     */
     public double getPower() {
         return motor.get();
     }
 
+    /**
+     * open piston
+     */
     public void openPiston() {
         piston.set(true);
     }
 
+    /**
+     * close piston
+     */
     public void closePiston() {
         piston.set(false);
     }
 
+    /**
+     * get piston
+     * @return true/false
+     */
     public boolean getPiston() {
         return piston.get();
     }
 
+    /**
+     * create intake
+     * @return intake
+     */
     public Intake INSTANCE() {
         if (INSTANCE == null) {
             INSTANCE = new Intake();
