@@ -11,9 +11,9 @@ import frc.robot.Ports;
 import java.security.spec.RSAOtherPrimeInfo;
 
 public class Intake extends SubsystemBase {
-    private final WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
-    private final Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.PISTON);
-    private Intake INSTANCE = null;
+    private static WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
+    private static Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.PISTON);
+    private static Intake INSTANCE = null;
 
     private Intake() {
         motor.setInverted(Ports.INV);
