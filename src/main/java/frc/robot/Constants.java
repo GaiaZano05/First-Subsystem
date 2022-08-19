@@ -14,5 +14,6 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-
+public static boolean VOLT_ENABLE = true;
+public static int SAT = 12;
 }
