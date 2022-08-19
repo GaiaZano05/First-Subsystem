@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  */
 
 public class Pickup extends CommandBase {
-    private Intake intake;
-    private double power;
+    private final Intake intake;
+    private final double power;
 
     public Pickup(Intake intake, double power) {
         this.intake = intake;
