@@ -2,6 +2,10 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+/**
+ * opens piston, set power to power%, close piston, set power 0%.
+ */
+
 public class Pickup extends CommandBase {
     private Intake intake;
     private double power;
@@ -24,7 +28,9 @@ public class Pickup extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
+        intake.closePiston();
         intake.setPower(0);
+
     }
-    
+
 }
