@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.commands.MoveIntake;
 import frc.robot.subsystems.commands.PowerWheels;
+import frc.robot.subsystems.commands.TakeBall;
 
 
 /**
@@ -27,6 +28,7 @@ public class RobotContainer
     private JoystickButton a = new JoystickButton(xbox, XboxController.Button.kA.value);
     private JoystickButton x = new JoystickButton(xbox, XboxController.Button.kX.value);
     private JoystickButton b = new JoystickButton(xbox, XboxController.Button.kB.value);
+    private JoystickButton y = new JoystickButton(xbox, XboxController.Button.kY.value);
     private Intake intake = new Intake();
 
     
@@ -48,9 +50,10 @@ public class RobotContainer
     {
         // Add button to command mappings here.
         // See https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html
-        a.whenPressed(new MoveIntake(intake, false));
-        x.whenPressed(new MoveIntake(intake, true));
+        a.whenPressed(new MoveIntake(intake, false));//up
+        x.whenPressed(new MoveIntake(intake, true));//down
         b.whileHeld(new PowerWheels(intake));
+        y.whileHeld(new TakeBall(intake));
     }
     
     
