@@ -8,7 +8,7 @@ import frc.robot.Constants;
 import frc.robot.Ports;
 
 public class Intake extends SubsystemBase {
-    private static WPI_TalonFX motor = new WPI_TalonFX(Ports.INTAKE);
+    private static WPI_TalonFX motor = new WPI_TalonFX(Ports.MOTOR);
     private static Solenoid piston = new Solenoid(PneumaticsModuleType.CTREPCM, Ports.PISTON);
     private static Intake INSTANCE = null;
 
@@ -33,13 +33,19 @@ public class Intake extends SubsystemBase {
         return INSTANCE;
     }
 
-    public static void toggle(){
+    public static void toggle() {
         piston.toggle();
     }
-    public static void openPiston(){
+
+    public static void openPiston() {
         piston.set(true);
     }
-    public static void closePiston(){
+
+    public static void closePiston() {
         piston.set(false);
+    }
+
+    public static void stopMotor() {
+        motor.set(0);
     }
 }

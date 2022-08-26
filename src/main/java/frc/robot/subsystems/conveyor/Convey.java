@@ -7,13 +7,12 @@ public class Convey extends CommandBase {
     private final Conveyor conveyor;
     private final double power;
 
-    public Convey(Conveyor conveyor, double power){
-        this.conveyor=conveyor;
-        this.power=power;
+    public Convey(Conveyor conveyor, double power) {
+        this.conveyor = conveyor;
+        this.power = power;
         addRequirements(conveyor);
 
     }
-
 
 
     @Override
@@ -23,6 +22,6 @@ public class Convey extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
-        conveyor.setPower(0);
+        conveyor.stopMotor();
     }
 }

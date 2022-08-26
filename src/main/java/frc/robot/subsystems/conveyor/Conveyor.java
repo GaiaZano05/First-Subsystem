@@ -7,29 +7,31 @@ import frc.robot.Ports;
 
 
 public class Conveyor extends SubsystemBase {
-    private static WPI_TalonFX motor=new WPI_TalonFX(Ports.CONVEYOR);
-    private static Conveyor INSTANCE=null;
+    private static WPI_TalonFX motor = new WPI_TalonFX(Ports.CONVEYOR);
+    private static Conveyor INSTANCE = null;
 
-    private Conveyor(){
+    private Conveyor() {
         motor.setInverted(Ports.INVERTED);
         motor.enableVoltageCompensation(Constants.ENABLE_VOLTAGE);
         motor.configVoltageCompSaturation(Constants.COMP_VOLTAGE);
     }
 
-    public static double getPower(){
+    public static double getPower() {
         return motor.get();
     }
-    public static void setPower(double Power){
+
+    public static void setPower(double Power) {
         motor.set(Power);
     }
 
-    public static Conveyor INSTANCE(){
-        if (INSTANCE==null){
-            INSTANCE=new Conveyor();
+    public static Conveyor INSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new Conveyor();
         }
         return INSTANCE;
     }
 
-
-
+    public static void stopMotor() {
+        motor.set(0);
+    }
 }

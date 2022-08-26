@@ -6,9 +6,9 @@ public class pickCargo extends CommandBase {
     private final Intake intake;
     private final double power;
 
-    public pickCargo(Intake intake, double power){
-        this.intake=intake;
-        this.power=power;
+    public pickCargo(Intake intake, double power) {
+        this.intake = intake;
+        this.power = power;
         addRequirements(intake);
     }
 
@@ -24,9 +24,7 @@ public class pickCargo extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
-        intake.setPower(0);
+        intake.stopMotor();
         intake.closePiston();
     }
-
-    
 }
