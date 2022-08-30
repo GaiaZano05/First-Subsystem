@@ -21,7 +21,7 @@ public final class Constants {
 
     public static final class Conveyor {
         public static final int VOLTAGE_SATURATION = 12;
-        public static final Boolean VOLTAGE_COMPEMTION = true;
+        public static final Boolean VOLTAGE_COMPENSATION = true;
 
     }
 }
