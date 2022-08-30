@@ -2,6 +2,10 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+/**
+ * this command is to move conveyor
+ */
+
 public class Convey extends CommandBase {
     private final Conveyor conveyor;
     private final double power;

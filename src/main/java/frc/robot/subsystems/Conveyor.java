@@ -13,9 +13,19 @@ public class Conveyor extends SubsystemBase {
         motor.enableVoltageCompensation(Constants.Conveyor.VOLTAGE_COMPEMTION);
         motor.setInverted(Constants.Conveyor.VOLTAGE_COMPEMTION);
     }
+
+    /**
+     * set power to motor
+     * @param power [-1 - 1]
+     */
     public void setPower(double power){
         motor.set(power);
     }
+
+    /**
+     * get power of motor
+     * @return power [-1 - 1]
+     */
     public double getPower(){
         return motor.get();
     }
