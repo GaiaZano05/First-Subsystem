@@ -10,8 +10,9 @@ public class Conveyor extends SubsystemBase {
 
     private Conveyor(){
         motor.configVoltageCompSaturation(Constants.Conveyor.VOLTAGE_SATURATION);
-        motor.enableVoltageCompensation(Constants.Conveyor.VOLTAGE_COMPEMTION);
-        motor.setInverted(Constants.Conveyor.VOLTAGE_COMPEMTION);
+        motor.enableVoltageCompensation(Constants.Conveyor.VOLTAGE_COMPENSATION);
+        motor.setInverted(Ports.Conveyor.INVERT_TYPE);
+
     }
 
     /**
